@@ -1,5 +1,5 @@
 all:
-	@gcc -o chess main.c -Wall -Werror -Wextra
+	@gcc -o chess chess.c -Wall -Werror -Wextra
 
 test: all
 	@./chess
