@@ -1,3 +1,4 @@
-public class Queen
-{
+package PACKAGE_NAME;
+
+public class Queen {
 }

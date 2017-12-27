@@ -1,3 +1,4 @@
-public class Pawn
-{
+package PACKAGE_NAME;
+
+public class Pawn {
 }

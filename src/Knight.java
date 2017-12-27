@@ -1,3 +1,4 @@
-public class Knight
-{
+package PACKAGE_NAME;
+
+public class Knight {
 }
