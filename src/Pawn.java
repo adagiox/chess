@@ -1,4 +1,6 @@
-package PACKAGE_NAME;
+public class Pawn extends Piece
+{
 
-public class Pawn {
+	public final static int value = 1;
+
 }

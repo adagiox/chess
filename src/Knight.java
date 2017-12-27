@@ -1,4 +1,4 @@
-package PACKAGE_NAME;
-
-public class Knight {
+public class Knight extends Piece
+{
+	public final static int value = 3;
 }
