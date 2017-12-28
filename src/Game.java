@@ -25,6 +25,8 @@ public class Game
 		printBoard();
 	}
 
+	//@TODO: Create board state, ability to import or edit a board state
+
 	public void setBoard()
 	{
 		for (int rank = 8; rank >= 1; rank--)

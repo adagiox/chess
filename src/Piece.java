@@ -16,5 +16,6 @@ abstract public class Piece
     int ownedBy;
     List<Move> validMoves;
 
-
+	//@TODO: Add valid move method to return list of valid moves to be processed
+	abstract public List<Move> getValidMoves();
 }
