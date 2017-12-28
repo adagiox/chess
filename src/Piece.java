@@ -1,3 +1,5 @@
+import java.util.List;
+
 abstract public class Piece
 {
     public final static int PIECE_WHITE = 0;
@@ -12,4 +14,7 @@ abstract public class Piece
     int type;
     Tile currentTile;
     int ownedBy;
+    List<Move> validMoves;
+
+
 }

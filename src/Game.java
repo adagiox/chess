@@ -30,13 +30,8 @@ public class Game
 		for (int rank = 8; rank >= 1; rank--)
 		{
 			for (char file = 'A'; file < 73; file++)
-			{
 				board[rank - 1][(int)file - 65] = new Tile(rank, file);
-				System.out.print(file + "," + rank + " ");
-			}
-			System.out.println();
 		}
-		System.out.println();
 	}
 
 	public void initBoardPieces()

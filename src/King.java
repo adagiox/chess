@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class King extends Piece
 {
 
@@ -6,5 +8,6 @@ public class King extends Piece
 		ownedBy = owner;
 		currentTile = tile;
 		type = PIECE_TYPE_KING;
+		validMoves = new ArrayList<>();
 	}
 }

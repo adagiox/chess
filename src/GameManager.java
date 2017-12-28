@@ -3,20 +3,25 @@ import java.util.Queue;
 
 public class GameManager
 {
+	Game currentGame;
 	Queue<Move> moveQueue;
 
-	public GameManager()
+	public GameManager(Game game)
 	{
+		currentGame = game;
 		moveQueue = new LinkedList<>();
 	}
 
-	public getEvents()
+	// get the events for a turn
+	//    one players move and update any ui elements accordingly
+	// @TODO: create a UI manager for ui updates
+	public boolean getEvents(int turn)
 	{
-
+		return true;
 	}
 
-	public processEvents()
+	public boolean processEvents()
 	{
-
+		return true;
 	}
 }

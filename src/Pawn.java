@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Pawn extends Piece
 {
 	public final static int value = 1;
@@ -7,5 +9,6 @@ public class Pawn extends Piece
 		ownedBy = owner;
 		currentTile = tile;
 		type = PIECE_TYPE_PAWN;
+		validMoves = new ArrayList<>();
 	}
 }

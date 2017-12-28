@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Rook extends Piece
 {
 	public final static int value = 5;
@@ -7,5 +9,6 @@ public class Rook extends Piece
 		ownedBy = owner;
 		currentTile = tile;
 		type = PIECE_TYPE_ROOK;
+		validMoves = new ArrayList<>();
 	}
 }
