@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Knight extends Piece
 {
@@ -10,5 +11,10 @@ public class Knight extends Piece
 		currentTile = tile;
 		type = PIECE_TYPE_KNIGHT;
 		validMoves = new ArrayList<>();
+	}
+
+	public List<Move> getValidMoves()
+	{
+		return null;
 	}
 }

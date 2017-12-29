@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Rook extends Piece
 {
@@ -10,5 +11,10 @@ public class Rook extends Piece
 		currentTile = tile;
 		type = PIECE_TYPE_ROOK;
 		validMoves = new ArrayList<>();
+	}
+
+	public List<Move> getValidMoves()
+	{
+		return null;
 	}
 }

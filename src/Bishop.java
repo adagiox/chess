@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Bishop extends Piece
 {
@@ -10,5 +11,10 @@ public class Bishop extends Piece
 		currentTile = tile;
 		type = PIECE_TYPE_BISHOP;
 		validMoves = new ArrayList<>();
+	}
+
+	public List<Move> getValidMoves()
+	{
+		return null;
 	}
 }

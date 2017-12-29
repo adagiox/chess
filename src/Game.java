@@ -3,6 +3,22 @@ import java.util.List;
 
 public class Game
 {
+	public final static char BLANK_TILE = ' ';
+
+	public final static char WHITE_PAWN = 'P';
+	public final static char WHITE_ROOK = 'R';
+	public final static char WHITE_KNIGHT = 'K';
+	public final static char WHITE_BISHOP = 'B';
+	public final static char WHITE_KING = '*';
+	public final static char WHITE_QUEEN = 'Q';
+
+	public final static char BLACK_PAWN = 'p';
+	public final static char BLACK_ROOK = 'r';
+	public final static char BLACK_KNIGHT = 'k';
+	public final static char BLACK_BISHOP = 'b';
+	public final static char BLACK_KING = '#';
+	public final static char BLACK_QUEEN = 'q';
+
 	Tile[][] board;
 	List<Piece> activeWhite;
 	List<Piece> activeBlack;
@@ -13,7 +29,7 @@ public class Game
 
 	public Game()
 	{
-		//gui = new Gui();
+		gui = new Gui();
 		board = new Tile[8][8];
 		activeWhite = new ArrayList<>();
 		activeBlack = new ArrayList<>();
@@ -23,6 +39,7 @@ public class Game
 		setBoard();
 		initBoardPieces();
 		printBoard();
+		System.out.println(getBoardState());
 	}
 
 	//@TODO: Create board state, ability to import or edit a board state
@@ -34,6 +51,93 @@ public class Game
 			for (char file = 'A'; file < 73; file++)
 				board[rank - 1][(int)file - 65] = new Tile(rank, file);
 		}
+	}
+
+	public String getBoardState()
+	{
+		StringBuilder state = new StringBuilder();
+		for (Tile[] t : board)
+		{
+			for (Tile i : t)
+			{
+				if (i.currentPiece == null)
+					state.append(Game.BLANK_TILE);
+				else if (i.currentPiece.ownedBy == Piece.PIECE_WHITE)
+				{
+					if (i.currentPiece.type == Piece.PIECE_TYPE_PAWN)
+						state.append(Game.WHITE_PAWN);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_ROOK)
+						state.append(Game.WHITE_ROOK);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_KNIGHT)
+						state.append(Game.WHITE_KNIGHT);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_BISHOP)
+						state.append(Game.WHITE_BISHOP);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_KING)
+						state.append(Game.WHITE_KING);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_QUEEN)
+						state.append(Game.WHITE_QUEEN);
+				}
+				else
+				{
+					if (i.currentPiece.type == Piece.PIECE_TYPE_PAWN)
+						state.append(Game.BLACK_PAWN);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_ROOK)
+						state.append(Game.BLACK_ROOK);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_KNIGHT)
+						state.append(Game.BLACK_KNIGHT);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_BISHOP)
+						state.append(Game.BLACK_BISHOP);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_KING)
+						state.append(Game.BLACK_KING);
+					else if (i.currentPiece.type == Piece.PIECE_TYPE_QUEEN)
+						state.append(Game.BLACK_QUEEN);
+				}
+			}
+		}
+		return state.toString();
+	}
+
+	public Tile[][] loadBoardState(String state)
+	{
+		return parseState(state);
+	}
+
+	public Tile[][] parseState(String state)
+	{
+		Tile[][] newBoard = new Tile[8][8];
+		int j = 0;
+		for (int i = 0; i < state.length(); i++)
+		{
+			if (state.charAt(i) == WHITE_PAWN)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_PAWN, Piece.PIECE_WHITE, newBoard[i][j]);
+			else if (state.charAt(i) == WHITE_ROOK)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_ROOK, Piece.PIECE_WHITE, newBoard[i][j]);
+			else if (state.charAt(i) == WHITE_KNIGHT)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_KNIGHT, Piece.PIECE_WHITE, newBoard[i][j]);
+			else if (state.charAt(i) == WHITE_BISHOP)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_BISHOP, Piece.PIECE_WHITE, newBoard[i][j]);
+			else if (state.charAt(i) == WHITE_KING)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_KING, Piece.PIECE_WHITE, newBoard[i][j]);
+			else if (state.charAt(i) == WHITE_QUEEN)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_QUEEN, Piece.PIECE_WHITE, newBoard[i][j]);
+			else if (state.charAt(i) == BLACK_PAWN)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_PAWN, Piece.PIECE_BLACK, newBoard[i][j]);
+			else if (state.charAt(i) == BLACK_ROOK)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_ROOK, Piece.PIECE_BLACK, newBoard[i][j]);
+			else if (state.charAt(i) == BLACK_KNIGHT)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_KNIGHT, Piece.PIECE_BLACK, newBoard[i][j]);
+			else if (state.charAt(i) == BLACK_BISHOP)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_BISHOP, Piece.PIECE_BLACK, newBoard[i][j]);
+			else if (state.charAt(i) == BLACK_KING)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_KING, Piece.PIECE_BLACK, newBoard[i][j]);
+			else if (state.charAt(i) == BLACK_QUEEN)
+				newBoard[i][j].currentPiece = newPiece(Piece.PIECE_TYPE_QUEEN, Piece.PIECE_BLACK, newBoard[i][j]);
+			if (j < 8)
+				j++;
+			else
+				j = 0;
+		}
+		return newBoard;
 	}
 
 	public void initBoardPieces()
